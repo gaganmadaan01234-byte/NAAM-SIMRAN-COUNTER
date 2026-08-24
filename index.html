@@ -2,75 +2,274 @@
 <html lang="hi">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name="theme-color" content="#6d3f20">
-<link rel="manifest" href="manifest.json">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Waheguru Naam Jap</title>
+
 <style>
 *{box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;margin:0;background:radial-gradient(circle at top,#fff9ef 0,#f4e8d4 45%,#ead7bc 100%);color:#3d2a1d;text-align:center}
-.wrap{max-width:430px;margin:auto;padding:24px 18px 35px}
-.logo{width:82px;height:82px;margin:4px auto 10px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#a96f3f,#603719);box-shadow:0 8px 22px #0003;border:4px solid #f9e9ce;font-size:42px}
-h1{margin:4px 0 2px;font-family:Georgia,serif;font-size:31px;letter-spacing:.4px;background:linear-gradient(90deg,#6a3b1d,#b06a2c,#6a3b1d);-webkit-background-clip:text;background-clip:text;color:transparent}
-.sub{font-size:14px;opacity:.72;margin-bottom:20px}
-.card{background:#fffaf2eF;border-radius:26px;padding:21px;box-shadow:0 10px 28px #6b431c1c;margin-bottom:16px;border:1px solid #ead9bf}
-.label{font-size:14px;opacity:.62}.count{font-size:58px;font-weight:800;margin:7px 0 15px}
-.japbtn{width:190px;height:190px;border-radius:50%;border:0;color:#fff;background:radial-gradient(circle at 35% 28%,#b87a48,#7b471f 62%,#573014 100%);font-family:Georgia,serif;font-size:31px;font-weight:700;box-shadow:0 10px 25px #5c351d55, inset 0 2px 4px #ffffff44;transition:transform .08s,box-shadow .08s;touch-action:manipulation}
-.japbtn:active,.japbtn.pressed{transform:scale(.94);box-shadow:0 4px 10px #5c351d44,inset 0 3px 8px #0004}
-.ripple{animation:ripple .28s ease-out}@keyframes ripple{0%{box-shadow:0 0 0 0 #b47a4a88,0 10px 25px #5c351d55}100%{box-shadow:0 0 0 18px #b47a4a00,0 10px 25px #5c351d55}}
-.total{font-size:32px;font-weight:800}.small{font-size:13px;opacity:.65;margin-top:7px}
-.history{text-align:left;max-height:300px;overflow:auto}.day{display:flex;justify-content:space-between;padding:11px 4px;border-bottom:1px solid #eadfce}
-.toast{position:fixed;left:50%;bottom:32px;transform:translateX(-50%) scale(.9);background:#3f2718;color:#fff;padding:11px 17px;border-radius:999px;font-size:15px;font-weight:700;opacity:0;pointer-events:none;transition:.15s;box-shadow:0 7px 20px #0003;z-index:5}
-.toast.show{opacity:1;transform:translateX(-50%) scale(1)}
-</style></head>
-<body><div class="wrap">
-<div class="logo">🙏</div>
-<h1>Waheguru Naam Jap</h1>
-<div class="sub">Har click = 1 Waheguru • Waheguru Ji 🙏</div>
 
-<div class="card">
-<div class="label">Aaj ka Jap</div>
-<div class="count" id="today">0</div>
-<button class="japbtn" id="waheguru" aria-label="Waheguru naam jap">Waheguru</button>
-<div class="small">Button dabate hi count +1 aur vibration</div>
-</div>
+body{
+  margin:0;
+  background:#f6f1e7;
+  color:#3b2d24;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  text-align:center;
+}
 
-<div class="card">
-<div class="label">Total Jap</div>
-<div class="total" id="total">0</div>
-<div class="small">Sabhi dinon ka total</div>
-</div>
+.wrap{
+  max-width:430px;
+  margin:auto;
+  padding:35px 18px 45px;
+}
 
-<div class="card">
-<div class="label">📅 Date-wise History</div>
-<div class="history" id="history"></div>
+.logo{
+  font-size:58px;
+  margin-bottom:5px;
+}
+
+h1{
+  margin:0;
+  font-size:34px;
+  font-weight:800;
+  letter-spacing:-1px;
+}
+
+.sub{
+  margin-top:8px;
+  font-size:18px;
+  color:#806f61;
+}
+
+.card{
+  margin-top:30px;
+  background:#fffaf2;
+  border-radius:30px;
+  padding:35px 20px;
+  box-shadow:0 8px 30px rgba(70,50,30,.08);
+}
+
+.label{
+  font-size:20px;
+  color:#806f61;
+  margin-bottom:18px;
+}
+
+.count{
+  font-size:72px;
+  font-weight:800;
+  margin-bottom:28px;
+}
+
+.japbtn{
+  width:210px;
+  height:210px;
+  border:0;
+  border-radius:50%;
+  background:#95663f;
+  color:white;
+  font-size:30px;
+  font-weight:800;
+  box-shadow:0 10px 25px rgba(100,65,35,.25);
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+  transition:.12s;
+}
+
+.japbtn:active,
+.japbtn.pressed{
+  transform:scale(.94);
+  box-shadow:0 5px 12px rgba(100,65,35,.2);
+}
+
+.small{
+  margin-top:22px;
+  color:#806f61;
+  font-size:17px;
+}
+
+.total{
+  font-size:38px;
+  font-weight:800;
+  margin-top:10px;
+}
+
+.history{
+  margin-top:25px;
+  text-align:left;
+  font-size:16px;
+  line-height:1.8;
+  color:#66584e;
+}
+
+.history-title{
+  text-align:center;
+  font-size:20px;
+  font-weight:700;
+  margin-bottom:10px;
+}
+
+.day{
+  display:flex;
+  justify-content:space-between;
+  border-bottom:1px solid #e8ddce;
+  padding:6px 2px;
+}
+
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:35px;
+  transform:translateX(-50%) scale(.9);
+  background:#3b2d24;
+  color:white;
+  padding:12px 20px;
+  border-radius:25px;
+  opacity:0;
+  pointer-events:none;
+  transition:.2s;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translateX(-50%) scale(1);
+}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <div class="logo">🙏</div>
+
+  <h1>✨ Waheguru Naam Jap ✨</h1>
+
+  <div class="sub">Waheguru Ji 🙏</div>
+
+  <div class="card">
+
+    <div class="label">Aaj ka Naam Jap</div>
+
+    <div class="count" id="today">0</div>
+
+    <button class="japbtn" id="waheguru">
+      Waheguru Ji 🙏
+    </button>
+
+    <div class="small">Har click = 1 Naam Jap</div>
+
+  </div>
+
+  <div class="card">
+
+    <div class="label">Total Naam Jap</div>
+
+    <div class="total" id="total">0</div>
+
+    <div class="history" id="history"></div>
+
+  </div>
+
+  <div class="toast" id="toast">🙏 Waheguru Ji</div>
+
 </div>
-</div>
-<div class="toast" id="toast">🙏 Waheguru +1</div>
 
 <script>
-const STORAGE="waheguruNaamJapV3";
-function dateKey(d=new Date()){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
-function load(){try{return JSON.parse(localStorage.getItem(STORAGE)||"{}")}catch(e){return {}}}
-let data=load();
-function save(){localStorage.setItem(STORAGE,JSON.stringify(data));render()}
+
+const STORAGE="waheguruNaamJapV4";
+
+function dateKey(){
+  const d=new Date();
+  return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+}
+
+function load(){
+  try{
+    return JSON.parse(localStorage.getItem(STORAGE)) || {};
+  }catch(e){
+    return {};
+  }
+}
+
+function save(data){
+  localStorage.setItem(STORAGE,JSON.stringify(data));
+}
+
 function addJap(){
- const k=dateKey(); data[k]=(data[k]||0)+1; save();
- if(navigator.vibrate) navigator.vibrate(35);
- const b=document.getElementById("waheguru"),t=document.getElementById("toast");
- b.classList.remove("ripple"); void b.offsetWidth; b.classList.add("ripple");
- t.classList.add("show"); clearTimeout(window.tt); window.tt=setTimeout(()=>t.classList.remove("show"),450);
+
+  const data=load();
+  const key=dateKey();
+
+  data[key]=(data[key] || 0)+1;
+
+  save(data);
+
+  if(navigator.vibrate){
+    navigator.vibrate(35);
+  }
+
+  const btn=document.getElementById("waheguru");
+
+  btn.classList.add("pressed");
+
+  setTimeout(()=>{
+    btn.classList.remove("pressed");
+  },120);
+
+  const toast=document.getElementById("toast");
+
+  toast.classList.add("show");
+
+  setTimeout(()=>{
+    toast.classList.remove("show");
+  },350);
+
+  render();
 }
-function fmt(n){return Number(n||0).toLocaleString("en-IN")}
-function pretty(k){const [y,m,d]=k.split("-");return d+"-"+m+"-"+y}
+
 function render(){
- const k=dateKey(); document.getElementById("today").textContent=fmt(data[k]||0);
- let keys=Object.keys(data).filter(k=>Number(data[k])>0).sort().reverse();
- let total=keys.reduce((s,k)=>s+Number(data[k]||0),0);
- document.getElementById("total").textContent=fmt(total);
- document.getElementById("history").innerHTML=keys.length?keys.map(k=>`<div class="day"><span>${pretty(k)}</span><strong>${fmt(data[k])}</strong></div>`).join(""):'<div class="small">Abhi koi history nahi hai.</div>';
+
+  const data=load();
+  const key=dateKey();
+
+  const today=data[key] || 0;
+
+  let total=0;
+
+  Object.keys(data).forEach(k=>{
+    total += Number(data[k]) || 0;
+  });
+
+  document.getElementById("today").textContent=today;
+  document.getElementById("total").textContent=total;
+
+  const history=document.getElementById("history");
+
+  const keys=Object.keys(data).sort().reverse();
+
+  if(keys.length===0){
+    history.innerHTML="";
+    return;
+  }
+
+  let html='<div class="history-title">📅 Date-wise Naam Jap</div>';
+
+  keys.forEach(k=>{
+    html += `
+      <div class="day">
+        <span>${k}</span>
+        <strong>${data[k]}</strong>
+      </div>
+    `;
+  });
+
+  history.innerHTML=html;
 }
+
 document.getElementById("waheguru").addEventListener("click",addJap);
+
 render();
-if("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js");
-</script></body></html>
+
+</script>
+
+</body>
+</html>
